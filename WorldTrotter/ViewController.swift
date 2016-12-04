@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  WorldTrotter
 //
-//  Created by Derrick Ward on 12/4/16.
+//  Created by Derrick Kyle Ward on 12/4/16.
 //  Copyright © 2016 Derrick Ward. All rights reserved.
 //
 
