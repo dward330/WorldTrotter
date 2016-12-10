@@ -13,13 +13,15 @@ class ViewController: UIViewController {
         //Perform the Actions of the super class first, if there were any
         super.viewDidLoad();
         
-        demoViews();
+        
+        
+        //demoViews();
     }
     
     
     //Demos Creating a View and a subview of that view
     func demoViews(){
-        //Create a CGRect/Frame, containing position and size information
+        //Create a CGRect/Frame, containing its position and size information
         let firstFrame = CGRect(x: 160, y: 240, width: 100, height: 150);
         
         //Create a UIView, defined by our custom Frame above
