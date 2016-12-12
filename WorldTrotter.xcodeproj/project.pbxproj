@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4936AA5F1DFDF728001CC5A7 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4936AA5E1DFDF728001CC5A7 /* ConversionViewController.swift */; };
 		4997482A1DF48F5400738610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499748291DF48F5400738610 /* AppDelegate.swift */; };
-		4997482C1DF48F5400738610 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997482B1DF48F5400738610 /* ViewController.swift */; };
 		4997482F1DF48F5400738610 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4997482D1DF48F5400738610 /* Main.storyboard */; };
 		499748321DF48F5400738610 /* WorldTrotter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 499748301DF48F5400738610 /* WorldTrotter.xcdatamodeld */; };
 		499748341DF48F5400738610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499748331DF48F5400738610 /* Assets.xcassets */; };
@@ -16,9 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4936AA5E1DFDF728001CC5A7 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversionViewController.swift; path = ../ConversionViewController.swift; sourceTree = "<group>"; };
 		499748261DF48F5400738610 /* WorldTrotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldTrotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499748291DF48F5400738610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4997482B1DF48F5400738610 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4997482E1DF48F5400738610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		499748311DF48F5400738610 /* WorldTrotter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorldTrotter.xcdatamodel; sourceTree = "<group>"; };
 		499748331DF48F5400738610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,8 +56,8 @@
 		499748281DF48F5400738610 /* WorldTrotter */ = {
 			isa = PBXGroup;
 			children = (
+				4936AA5E1DFDF728001CC5A7 /* ConversionViewController.swift */,
 				499748291DF48F5400738610 /* AppDelegate.swift */,
-				4997482B1DF48F5400738610 /* ViewController.swift */,
 				4997482D1DF48F5400738610 /* Main.storyboard */,
 				499748331DF48F5400738610 /* Assets.xcassets */,
 				499748351DF48F5400738610 /* LaunchScreen.storyboard */,
@@ -140,8 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4997482C1DF48F5400738610 /* ViewController.swift in Sources */,
 				4997482A1DF48F5400738610 /* AppDelegate.swift in Sources */,
+				4936AA5F1DFDF728001CC5A7 /* ConversionViewController.swift in Sources */,
 				499748321DF48F5400738610 /* WorldTrotter.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +304,7 @@
 				4997483D1DF48F5400738610 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
