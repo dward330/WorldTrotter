@@ -89,4 +89,13 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
             return true; //Approve Change
         }
     }
+
+    override func viewDidLoad() {
+        //Always call the super implementation of viewDidLoad
+        super.viewDidLoad();
+        
+        //My own implementation next
+        print("ConversionViewController loaded its view.");
+    }
+    
 }
