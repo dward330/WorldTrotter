@@ -66,6 +66,13 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
     }
     
     //delegate method
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField.text == "Tap to enter your value"){
+            textField.text = "";
+        }
+    }
+    
+    //delegate method
     //Approves Changes made/entered by the user. Returning true means make the change and return false means dont return the change
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print("Current Text: \(textField.text)");
