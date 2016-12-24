@@ -20,6 +20,7 @@ class WebViewController: UIViewController {
         
         let url = URL(string: "https://www.hugginsfamilysvg.com");
         let urlRequest = URLRequest(url: url!);
+        
         //Set Website View should show
         self.webView.load(urlRequest);
     }

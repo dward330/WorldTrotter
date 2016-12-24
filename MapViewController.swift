@@ -156,17 +156,21 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     
     //Zooms Map into user location
     func zoomToUserLocation(buttonControl: UIButton){
-        
+        //Rquest User Permission to access thier Private Location Information
         self.locationManager.requestWhenInUseAuthorization();
         
+        //Store the user location
         let userLocation = self.mapView.userLocation
         
         print("user location: \(userLocation.coordinate)");
         
-        userLocation.title="Your Location";
+        userLocation.title="Your Location";//This is will display will user clicks on location/point
         
+        //Make sure there is a valid location
         if let loc = userLocation.location {
+            //Set the Region
             let region = MKCoordinateRegionMakeWithDistance(loc.coordinate, 1000, 1000);
+            //Set the Maps Region to the User Location
             mapView.setRegion(region, animated: true);
         }
     }

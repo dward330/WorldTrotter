@@ -84,13 +84,19 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         for charac in string.characters{
             if let temp = UnicodeScalar(String(charac)){
                 if NSCharacterSet.letters.contains(temp){
-                    return false;
+                    return false; //Deny Change
                 }
             }
         }
         
         if nil != existingDecimalSeperator && nil != replacementStringHasDecimalSeperator {
             return false; //Deny Change
+        }
+        else if string.characters.count == 0 {
+            return true;
+        }
+        else if textField.text!.characters.count >= 5{
+            return false;
         }
         else{
             return true; //Approve Change
