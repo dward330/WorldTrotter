@@ -23,4 +23,8 @@ class WebViewController: UIViewController {
         //Set Website View should show
         self.webView.load(urlRequest);
     }
+    
+    override func viewDidLoad() {
+        print("Web View Did Load!");
+    }
 }
