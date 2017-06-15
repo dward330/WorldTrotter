@@ -93,10 +93,10 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
             return false; //Deny Change
         }
         else if string.characters.count == 0 {
-            return true;
+            return true; //Approve Change
         }
         else if textField.text!.characters.count >= 5{
-            return false;
+            return false; //Approve Change
         }
         else{
             return true; //Approve Change

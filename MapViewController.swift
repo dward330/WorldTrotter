@@ -9,39 +9,53 @@
 import UIKit;
 import MapKit;
 
-class MapViewController: UIViewController, MKMapViewDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
 
     var mapView: MKMapView!;
     var segControl : UISegmentedControl!
     var locationManager : CLLocationManager!
+    var ApplicationStartingUp: Bool!;
     
     //Called when the view for this controller is nil, and the view for this controller is trying to be used
     override func loadView() {
+        //Set the flag that represents application is starting up
+        self.ApplicationStartingUp = Bool(true);
         
         //create the MapView View
         self.mapView = MKMapView();
         
-        //Show the users location on the map AND tells mapView to allow it self to get location updates
-        self.mapView.showsUserLocation=true;
+        //If we are using delegate methods in this class/controller we need to tell mapview the delegates to call are in here
+        self.mapView.delegate = self;
         
         //Set the View of this Controller
         self.view = self.mapView;
         
         //Set Location Manager
         self.locationManager = CLLocationManager();
-        
-        //Adds a Segmented Control to the current view
-        self.loadSegmentedControl(targetView: self.view, viewToPositionAgainst: self.view) //Needs to be done before we load UI Button
-        
-        //Adds a UI Button to the current view
-        self.loadUserLocationButton(targetView: self.view, viewToPositionAgainst: self.segControl,
-                                    xPositionPadding: 0, yPositionPadding: 10, width:nil, height: nil, text:"Derrick's Button");
-        
+        //If we are using delegate methods in this class/controller we need to tell CLLocationManager the delegates to call are in here
+        self.locationManager.delegate = self;
+        //Rquest User Permission to access thier Private Location Information
+        self.locationManager.requestWhenInUseAuthorization();
+        //Get the User Location Now
+        self.locationManager.requestLocation();
     }
     
     //When ViewController is first loaded into Memory
     override func viewDidLoad() {
         print("MapView Controller Did Load!");
+    }
+    
+    //Function to load in all UI Custom/Programmatic UI Elements
+    func LoadUIElements(){
+        if (self.ApplicationStartingUp == true){
+            self.ApplicationStartingUp = false;
+            //Adds a Segmented Control to the current view
+            self.loadSegmentedControl(targetView: self.view, viewToPositionAgainst: self.view) //Needs to be done before we load UI Button
+            
+            //Adds a UI Button to the current view
+            self.loadUserLocationButton(targetView: self.view, viewToPositionAgainst: self.segControl,
+                                        xPositionPadding: 0, yPositionPadding: 10, width:nil, height: nil, text:"Derrick's Button");
+        }
     }
     
     //Event Handler for touching down on a choice, on the segmented control
@@ -156,15 +170,16 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     
     //Zooms Map into user location
     func zoomToUserLocation(buttonControl: UIButton){
-        //Rquest User Permission to access thier Private Location Information
-        self.locationManager.requestWhenInUseAuthorization();
+        //Show the users location on the map AND tells mapView to allow it self to get location updates
+        self.mapView.showsUserLocation=true;
         
         //Store the user location
         let userLocation = self.mapView.userLocation
         
         print("user location: \(userLocation.coordinate)");
         
-        userLocation.title="Your Location";//This is will display will user clicks on location/point
+        //This is will display will user clicks on location/point
+        userLocation.title="Your Location";
         
         //Make sure there is a valid location
         if let loc = userLocation.location {
@@ -172,6 +187,31 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             let region = MKCoordinateRegionMakeWithDistance(loc.coordinate, 1000, 1000);
             //Set the Maps Region to the User Location
             mapView.setRegion(region, animated: true);
+        }
+    }
+    
+    //MKMapView Delegate
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        print("Finished Loading/Gathering Map Data");
+    }
+    
+    //MKMapView Delegate
+    func mapViewWillStartRenderingMap(_ mapView: MKMapView) {
+        print("Will Start Rendereing Map (Again)");
+    }
+    
+    //MKMapView Delegate
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        self.LoadUIElements(); //Load my Custom/Programmatic UI Elements
+        
+        print("Finished Rendereing Map");
+        
+        
+        if fullyRendered == true {
+            print("Map Finished Rendering!");
+        }
+        else{
+            print("Map Did Not Finish Rendering!")
         }
     }
     
@@ -183,4 +223,13 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         return tempUILabel;
     }
     
+    //CLLocationManager Delegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("User Location Updated: \(locations)");
+    }
+    
+    //CLLocationManager Delegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager Failed with the following error:\n\(error)");
+    }
 }
